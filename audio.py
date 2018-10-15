@@ -106,7 +106,7 @@ async def play(ctx, *,url):
         songs[ctx.message.server.id].append(song) #add song to queue
         await bot.say("Audio {} is queued".format(song.title))
 
-    if playing[ctx.message.server.id] == Ture:
+    if playing[ctx.message.server.id] == False:
         voice = bot.voice_client_in(ctx.message.server)
         player = await voice.create_ytdl_player(url, ytdl_options=opts, after=lambda: bot.loop.create_task(player_in(ctx)))
         players[ctx.message.server.id] = player
